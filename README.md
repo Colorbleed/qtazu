@@ -6,23 +6,28 @@ Python Qt widgets for [CG-Wire](https://www.cg-wire.com/) using [`gazu`](https:/
 
 This requires [Gazu](https://github.com/cgwire/gazu) and [Qt.py](https://github.com/mottosso/Qt.py).
 
+
 ## What is Qtazu?
 
-*Qtazu* implements Qt widgets that can be reused across projects to connect and work with a CG-Wire instance through an interface running in Python.
+*Qtazu* implements Qt widgets to connect and work with a CG-Wire instance through an interface running in Python.
 
-These widgets can then be embedded in DCCs like Maya, Houdini or even standalone Python applications like a studio pipeline.
+- Reusable components to develop your own interfacs to interact with CG-Wire.
+- Embeddable in DCCs supporting Python and Qt
+- _Or_ use them in your own standalone Python application, like a studio pipeline.
+- Agnostic widgets so you can easily instantiate them as you need
+
 
 **WIP**: *This is a WIP repository*
 
-## Usage Examples
 
-The Widgets are implemented in such a way you can easily initialize them as you need. 
+## Examples
 
-Here are some examples:
+The Widgets initialize in such a way you can easily embed them for your needs. 
 
-_The examples assume a running Qt application instance._
+_The examples assume a running Qt application instance exists._
 
-**Logging in**
+
+#### Logging in
 
 ```python
 from qtazu.widgets.login import Login
@@ -42,7 +47,8 @@ widget = Login()
 widget.show()
 ```
 
-Or you can automate a [login through `gazu`](https://github.com/cgwire/gazu#quickstart) and `qtazu` will use it.
+You can also automate a [login through `gazu`](https://github.com/cgwire/gazu#quickstart) and `qtazu` will use it.
+
 Or if you have logged in through another Python process you can pass on the tokens:
 
 ```python
@@ -61,7 +67,7 @@ gazu.client.set_host(host)
 gazu.client.set_tokens(tokens)
 ```
 
-**Submitting Comments**
+#### Submitting Comments
 
 You can easily submit comments for a specific Task, this includes drag 'n' dropping your own images of videos as attachment or using a Screen Marguee tool to attach a screenshot to your comment.
 
@@ -70,12 +76,14 @@ _Make sure you are logged in prior to this._
 ```python
 from qtazu.widgets.comment import CommentWidget
 
-task_id = "xyz" # Make sure to get a valid Task Id for your instance
+task_id = "xyz" # Make sure to set a valid Task Id
 widget = CommentWidget(task_id=task_id)
 widget.show()
 ```
 
-**Display all Persons with Thumbnails**
+#### Display all Persons with Thumbnails
+
+It's easy and quick to embed the available Persons into your own list view.
 
 ```python
 from qtazu.models.persons import PersonModel
@@ -91,9 +99,9 @@ view.setWindowTitle("CG-Wire Persons")
 view.show()
 ```
 
-**Define your own Qt widget that loads Thumbnails in the background**
+#### Define your own Qt widget that loads Thumbnails in the background
 
-This will show all CG-Wire projects as thumbnails
+This will show all CG-Wire projects as thumbnails.
 
 ```python
 import gazu
@@ -117,7 +125,9 @@ for project in gazu.project.all_open_projects():
 main.show()
 ```
 
-**Show a Welcome message to the logged in User**
+#### Welcome a User with a message
+
+Show a Welcome popup to the user with his or her thumbnail.
 
 ```python
 from Qt import QtWidgets, QtGui, QtCore
