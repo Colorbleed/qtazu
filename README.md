@@ -30,6 +30,8 @@ _The examples assume a running Qt application instance exists._
 
 #### Logging in
 
+![qtazu_login](https://user-images.githubusercontent.com/2439881/70457311-3ab92580-1ab0-11ea-817f-97b43d749923.png)
+
 ```python
 from qtazu.widgets.login import Login
 
@@ -88,6 +90,8 @@ widget.show()
 
 It's easy and quick to embed the available Persons into your own list view.
 
+![qtazu_persons_model](https://user-images.githubusercontent.com/2439881/70457319-3bea5280-1ab0-11ea-97b9-46c1388eb452.png)
+
 ```python
 from qtazu.models.persons import PersonModel
 from Qt import QtWidgets, QtCore
@@ -109,6 +113,8 @@ Here's an example prototype of listing Persons as you tag them:
 #### Define your own Qt widget that loads Thumbnails in the background
 
 This will show all CG-Wire projects as thumbnails.
+
+![qtazu_projects](https://user-images.githubusercontent.com/2439881/70457323-3db41600-1ab0-11ea-9488-720370a0f757.png)
 
 ```python
 import gazu
@@ -135,6 +141,8 @@ main.show()
 #### Welcome a User with a message
 
 Show a Welcome popup to the user with his or her thumbnail.
+
+![qtazu_welcome_popup](https://user-images.githubusercontent.com/2439881/70457328-3e4cac80-1ab0-11ea-9b4f-6ceccf2183d0.png)
 
 ```python
 from Qt import QtWidgets, QtGui, QtCore
