@@ -11,7 +11,7 @@ This requires [Gazu](https://github.com/cgwire/gazu) and [Qt.py](https://github.
 
 *Qtazu* implements Qt widgets to connect and work with a CG-Wire instance through an interface running in Python.
 
-- Reusable components to develop your own interfacs to interact with CG-Wire.
+- Reusable components to develop your own interfaces to interact with CG-Wire.
 - Embeddable in DCCs supporting Python and Qt
 - _Or_ use them in your own standalone Python application, like a studio pipeline.
 - Agnostic widgets so you can easily instantiate them as you need
