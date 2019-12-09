@@ -1,7 +1,9 @@
+import logging
+
 from Qt import QtWidgets, QtCore, QtGui
 import gazu
 
-import logging
+from ..utils import Worker
 
 log = logging.getLogger(__name__)
 
