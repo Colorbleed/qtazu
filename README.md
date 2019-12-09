@@ -15,6 +15,7 @@ This requires [Gazu](https://github.com/cgwire/gazu) and [Qt.py](https://github.
 - Embeddable in DCCs supporting Python and Qt
 - _Or_ use them in your own standalone Python application, like a studio pipeline.
 - Agnostic widgets so you can easily instantiate them as you need
+- Support PyQt5, PySide2, PyQt4 and PySide through [`Qt.py`](https://github.com/mottosso/Qt.py)
 
 
 **WIP**: *This is a WIP repository*
