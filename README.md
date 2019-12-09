@@ -15,6 +15,7 @@ This requires [Gazu](https://github.com/cgwire/gazu) and [Qt.py](https://github.
 - Embeddable in DCCs supporting Python and Qt
 - _Or_ use them in your own standalone Python application, like a studio pipeline.
 - Agnostic widgets so you can easily instantiate them as you need
+- Support PyQt5, PySide2, PyQt4 and PySide through [`Qt.py`](https://github.com/mottosso/Qt.py)
 
 
 **WIP**: *This is a WIP repository*
@@ -81,6 +82,8 @@ widget = CommentWidget(task_id=task_id)
 widget.show()
 ```
 
+![qtazu_comment_screenshot](https://user-images.githubusercontent.com/2439881/70453939-ec088d00-1aa9-11ea-876b-38747ee16b13.gif)
+
 #### Display all Persons with Thumbnails
 
 It's easy and quick to embed the available Persons into your own list view.
@@ -98,6 +101,10 @@ view.setMinimumHeight(60)
 view.setWindowTitle("CG-Wire Persons")
 view.show()
 ```
+
+Here's an example prototype of listing Persons as you tag them:
+
+![qtazu_tag_prototype_02](https://user-images.githubusercontent.com/2439881/70454197-57525f00-1aaa-11ea-8a07-85e4b16cf12d.gif)
 
 #### Define your own Qt widget that loads Thumbnails in the background
 
