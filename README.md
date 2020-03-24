@@ -50,6 +50,19 @@ widget = Login()
 widget.show()
 ```
 
+Directly trigger a callback once someone has logged in using Qt signals:
+
+```python
+from qtazu.widgets.login import Login
+
+def callback(success):
+    print("Did login succeed? Answer: %s" % success)
+
+widget = Login()
+widget.on_login.connect(callback)
+widget.show()
+```
+
 You can also automate a [login through `gazu`](https://github.com/cgwire/gazu#quickstart) and `qtazu` will use it.
 
 Or if you have logged in through another Python process you can pass on the tokens:
