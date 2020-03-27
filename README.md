@@ -59,7 +59,7 @@ def callback(success):
     print("Did login succeed? Answer: %s" % success)
 
 widget = Login()
-widget.on_login.connect(callback)
+widget.on_login_signal.connect(callback)
 widget.show()
 ```
 

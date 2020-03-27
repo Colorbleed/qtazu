@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 class Login(QtWidgets.QDialog):
     """Log-in dialog to CG-Wire"""
 
-    on_login = QtCore.Signal(bool)
+    on_login_signal = QtCore.Signal(bool)
 
     def __init__(self, parent=None, initialize_host=True):
         super(Login, self).__init__(parent)
@@ -127,12 +127,11 @@ class Login(QtWidgets.QDialog):
 
             self.error.setText(message)
             self.error.show()
-            self.on_login.emit(False)
+            self.on_login_signal.emit(False)
             return
 
         if result:
             name = "{user[first_name]} {user[last_name]}".format(**result)
             log.info("Logged in as %s.." % name)
-            self.on_login.emit(True)
-
-        self.accept()
+            self.on_login_signal.emit(True)
+            self.accept()
