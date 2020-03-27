@@ -134,4 +134,4 @@ class Login(QtWidgets.QDialog):
             name = "{user[first_name]} {user[last_name]}".format(**result)
             log.info("Logged in as %s.." % name)
             self.on_login_signal.emit(True)
-            self.accept()
+        self.accept()
