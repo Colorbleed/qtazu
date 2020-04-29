@@ -35,9 +35,7 @@ class AnimatedLabel(QtWidgets.QLabel):
         """
         color_begin = QtGui.QColor("#943434")
         color_end = QtGui.QColor("#CC4444")
-        byar = QtCore.QByteArray()
-        byar.append("zcolor")
-        self.color_anim = QtCore.QPropertyAnimation(self, byar)
+        self.color_anim = QtCore.QPropertyAnimation(self, b"background_color")
         self.color_anim.setStartValue(color_begin)
         self.color_anim.setEndValue(color_end)
         self.color_anim.setDuration(400)
@@ -49,14 +47,6 @@ class AnimatedLabel(QtWidgets.QLabel):
         self.color_anim.stop()
         self.color_anim.start()
 
-    def parse_style_sheet(self):
-        """
-        Return a list with style sheet instructions.
-        """
-        ss = self.styleSheet()
-        sts = [s.strip() for s in ss.split(';') if len(s.strip())]
-        return sts
-
     def get_back_color(self):
         """
         Get the background color.
@@ -67,20 +57,16 @@ class AnimatedLabel(QtWidgets.QLabel):
         """
         Set the given color as background color by parsing the style sheet.
         """
-        sss = self.parse_style_sheet()
-        bg_new = 'background-color: %s' % color.name()
-
-        for k, sty in enumerate(sss):
-            if re.search('\Abackground-color:', sty):
-                sss[k] = bg_new
-                break
-        else:
-            sss.append(bg_new)
-
-        self.setStyleSheet('; '.join(sss))
+        style = self.styleSheet()
+        pattern = "background-color:[^\n;]*"
+        new = "background-color: %s" % color.name()
+        style = re.sub(pattern, new, style, flags=re.MULTILINE)
+        self.setStyleSheet(style)
 
     # Property to animate : the label background color
-    zcolor = QtCore.Property(QtGui.QColor, get_back_color, set_back_color)
+    background_color = QtCore.Property(
+        QtGui.QColor, get_back_color, set_back_color
+    )
 
 
 class Login(QtWidgets.QDialog):
@@ -91,7 +77,7 @@ class Login(QtWidgets.QDialog):
     def __init__(self, parent=None, initialize_host=True):
         super(Login, self).__init__(parent)
 
-        self.setWindowTitle("Connect your app to Kitsu")
+        self.setWindowTitle("Connect to Kitsu")
 
         # Kitsu logo
         logo_label = QtWidgets.QLabel()
