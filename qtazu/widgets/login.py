@@ -153,7 +153,7 @@ class Login(QtWidgets.QDialog):
                 # Assume the host in gazu.client is already set correctly
                 # and copy it into these settings.
                 log.debug(
-                    "Setting CG-Wire host " "from gazu.client: %s" % gazu_host
+                    "Setting CG-Wire host from gazu.client: %s" % gazu_host
                 )
                 host = gazu_host
         else:
