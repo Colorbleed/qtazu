@@ -7,7 +7,7 @@ from Qt import QtWidgets, QtGui, QtCore
 
 log = logging.getLogger(__name__)
 
-PLACEHOLDER = os.path.join(
+KITSU_LOGO = os.path.join(
     os.path.dirname(os.path.dirname(__file__)), "res", "image", "logo_kitsu.png"
 )
 
@@ -82,7 +82,7 @@ class Login(QtWidgets.QDialog):
         # Kitsu logo
         logo_label = QtWidgets.QLabel()
         pixmap = QtGui.QPixmap()
-        pixmap.load(PLACEHOLDER)
+        pixmap.load(KITSU_LOGO)
         logo_label.setPixmap(pixmap)
         logo_label.setAlignment(QtCore.Qt.AlignCenter)
 
@@ -180,14 +180,14 @@ class Login(QtWidgets.QDialog):
             gazu.set_host(host)
             if not gazu.client.host_is_up():
                 raise ConnectionError(
-                    "Could not connect to the server. Is the host URL correct ?"
+                    "Could not connect to the server. Is the host URL correct?"
                 )
             result = gazu.log_in(user, password)
         except Exception as exc:
             message = str(exc)
             if message.startswith("auth/login"):
                 message = (
-                    "Could not connect to the server. Is the host URL correct ?"
+                    "Could not connect to the server. Is the host URL correct?"
                 )
             if message.startswith("('auth/login',"):
                 # Failed to login
